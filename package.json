@@ -1,6 +1,6 @@
 {
     "name": "@famgia/omnify-react-sso",
-    "version": "2.0.9",
+    "version": "2.0.10",
     "description": "SSO (Single Sign-On) schemas, types, and utilities for Omnify",
     "type": "module",
     "main": "./dist/index.cjs",
@@ -71,8 +71,8 @@
         "zod": "^3.25.0 || ^4.0.0"
     },
     "dependencies": {
-        "@famgia/omnify": "workspace:*",
-        "@famgia/omnify-typescript": "workspace:*"
+        "@famgia/omnify": "^2.0.9",
+        "@famgia/omnify-typescript": "^2.0.9"
     },
     "devDependencies": {
         "tsup": "^8.5.1",

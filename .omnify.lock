@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-01-19T12:43:44.425Z",
+  "updatedAt": "2026-01-19T14:42:24.910Z",
   "driver": "mysql",
   "schemas": {
     "Branch": {
@@ -8,7 +8,7 @@
       "kind": "object",
       "hash": "c7dd2f70f6d9d65fa75c9dbca5831597cfcdf23691cbd60ae62cae545cf6ebb7",
       "relativePath": "Branch.yaml",
-      "modifiedAt": "2026-01-19T12:43:43.831Z",
+      "modifiedAt": "2026-01-19T14:42:23.781Z",
       "properties": {
         "console_branch_id": {
           "type": "Uuid",
@@ -50,7 +50,7 @@
       "kind": "object",
       "hash": "2a2c4bf6d98122f87cf1a0ef1ff352bcab6958ee085fdfc96aeff68bfb80bda9",
       "relativePath": "Permission.yaml",
-      "modifiedAt": "2026-01-19T12:43:43.832Z",
+      "modifiedAt": "2026-01-19T14:42:23.782Z",
       "properties": {
         "name": {
           "type": "String",
@@ -82,7 +82,7 @@
       "kind": "object",
       "hash": "7e4828017d3ec814a5515b133eb26a432fed2e17686923d15bc14207060f50f9",
       "relativePath": "Role.yaml",
-      "modifiedAt": "2026-01-19T12:43:43.831Z",
+      "modifiedAt": "2026-01-19T14:42:23.781Z",
       "properties": {
         "name": {
           "type": "String",
@@ -115,9 +115,9 @@
     "RolePermission": {
       "name": "RolePermission",
       "kind": "object",
-      "hash": "a4280e499713a942474760d462b750fd698798bc7904cd3f9f2834ae9c8958de",
+      "hash": "9575276e82a912785c0668eb4f32b185624fcee0f1a45b317ba04952a27e33fb",
       "relativePath": "RolePermission.yaml",
-      "modifiedAt": "2026-01-19T12:43:43.832Z",
+      "modifiedAt": "2026-01-19T14:42:23.782Z",
       "properties": {
         "role": {
           "type": "Association",
@@ -130,7 +130,10 @@
           "target": "Permission"
         }
       },
-      "idType": "Uuid",
+      "primaryKey": [
+        "role_id",
+        "permission_id"
+      ],
       "timestamps": true
     },
     "Team": {
@@ -138,7 +141,7 @@
       "kind": "object",
       "hash": "cae85811509f3166e17ff5475da17f4931158d3c15ab3292369e4d11f88dbf95",
       "relativePath": "Team.yaml",
-      "modifiedAt": "2026-01-19T12:43:43.832Z",
+      "modifiedAt": "2026-01-19T14:42:23.783Z",
       "properties": {
         "console_team_id": {
           "type": "Uuid",
@@ -169,7 +172,7 @@
       "kind": "object",
       "hash": "bda165f9694ae91dc1e968035a376bd6f2e11699ea8a81acefe3a9e785947edb",
       "relativePath": "TeamPermission.yaml",
-      "modifiedAt": "2026-01-19T12:43:43.832Z",
+      "modifiedAt": "2026-01-19T14:42:23.782Z",
       "properties": {
         "console_org_id": {
           "type": "Uuid"
@@ -201,7 +204,7 @@
       "kind": "object",
       "hash": "fbdf5d284423617ab2d5f00563b0dfc905f0fe9e7ad17d2a9faf488e994bfd84",
       "relativePath": "User.yaml",
-      "modifiedAt": "2026-01-19T12:43:43.832Z",
+      "modifiedAt": "2026-01-19T14:42:23.782Z",
       "properties": {
         "name": {
           "type": "String"
