@@ -1,0 +1,83 @@
+{
+    "name": "@famgia/omnify-react-sso",
+    "version": "2.0.3",
+    "description": "SSO (Single Sign-On) schemas, types, and utilities for Omnify",
+    "type": "module",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            },
+            "require": {
+                "types": "./dist/index.d.cts",
+                "default": "./dist/index.cjs"
+            }
+        },
+        "./schemas": {
+            "import": {
+                "types": "./dist/schemas/index.d.ts",
+                "default": "./dist/schemas/index.js"
+            },
+            "require": {
+                "types": "./dist/schemas/index.d.cts",
+                "default": "./dist/schemas/index.cjs"
+            }
+        },
+        "./schemas/*": {
+            "import": {
+                "types": "./dist/schemas/*.d.ts",
+                "default": "./dist/schemas/*.js"
+            },
+            "require": {
+                "types": "./dist/schemas/*.d.cts",
+                "default": "./dist/schemas/*.cjs"
+            }
+        }
+    },
+    "files": [
+        "dist",
+        "scripts",
+        "README.md"
+    ],
+    "scripts": {
+        "build:schemas": "tsx scripts/build-schemas.ts",
+        "build:lib": "tsup",
+        "build": "pnpm build:schemas && pnpm build:lib",
+        "clean": "rm -rf dist src/schemas schemas",
+        "typecheck": "tsc --noEmit"
+    },
+    "keywords": [
+        "omnify",
+        "sso",
+        "typescript",
+        "zod",
+        "user",
+        "role",
+        "permission",
+        "team"
+    ],
+    "author": "Famgia",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ecsol/omnify-ts.git",
+        "directory": "packages/omnify-client-react-sso"
+    },
+    "peerDependencies": {
+        "zod": "^3.25.0 || ^4.0.0"
+    },
+    "dependencies": {
+        "@famgia/omnify": "workspace:*",
+        "@famgia/omnify-typescript": "workspace:*"
+    },
+    "devDependencies": {
+        "tsup": "^8.5.1",
+        "tsx": "^4.21.0",
+        "typescript": "^5.8.3",
+        "zod": "^4.3.5"
+    }
+}

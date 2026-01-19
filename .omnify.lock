@@ -1,0 +1,262 @@
+{
+  "version": 2,
+  "updatedAt": "2026-01-19T01:24:09.115Z",
+  "driver": "mysql",
+  "schemas": {
+    "User": {
+      "name": "User",
+      "kind": "object",
+      "hash": "6afb35facf26ad1f9de2e011fc151b3309ff344d957934007423fccfdb28f89e",
+      "relativePath": "User.yaml",
+      "modifiedAt": "2026-01-19T01:24:08.239Z",
+      "properties": {
+        "name": {
+          "type": "String"
+        },
+        "email": {
+          "type": "String",
+          "unique": true
+        },
+        "email_verified_at": {
+          "type": "Timestamp",
+          "nullable": true
+        },
+        "password": {
+          "type": "String"
+        },
+        "remember_token": {
+          "type": "String",
+          "nullable": true,
+          "length": 100
+        },
+        "console_user_id": {
+          "type": "BigInt",
+          "nullable": true,
+          "unique": true,
+          "unsigned": true
+        },
+        "console_access_token": {
+          "type": "Text",
+          "nullable": true
+        },
+        "console_refresh_token": {
+          "type": "Text",
+          "nullable": true
+        },
+        "console_token_expires_at": {
+          "type": "Timestamp",
+          "nullable": true
+        },
+        "role": {
+          "type": "Association",
+          "nullable": true,
+          "relation": "ManyToOne",
+          "target": "Role"
+        }
+      },
+      "timestamps": true
+    },
+    "Branch": {
+      "name": "Branch",
+      "kind": "object",
+      "hash": "8858cf23feee7712207f72c0043551d8889286ba1cbf8bf89837347da804e5a5",
+      "relativePath": "Branch.yaml",
+      "modifiedAt": "2026-01-19T01:24:08.238Z",
+      "properties": {
+        "console_branch_id": {
+          "type": "BigInt",
+          "unique": true,
+          "unsigned": true
+        },
+        "console_org_id": {
+          "type": "BigInt",
+          "unsigned": true
+        },
+        "code": {
+          "type": "String",
+          "length": 20
+        },
+        "name": {
+          "type": "String",
+          "length": 100
+        },
+        "is_headquarters": {
+          "type": "Boolean",
+          "default": false
+        },
+        "is_active": {
+          "type": "Boolean",
+          "default": true
+        }
+      },
+      "timestamps": true,
+      "softDelete": true,
+      "indexes": [
+        {
+          "columns": [
+            "console_org_id"
+          ],
+          "unique": false
+        },
+        {
+          "columns": [
+            "console_org_id",
+            "code"
+          ],
+          "unique": true
+        }
+      ]
+    },
+    "Permission": {
+      "name": "Permission",
+      "kind": "object",
+      "hash": "af59545430bf8f9a52adddd7ac631e49a5e2fb43d57a9ef73315039ab7ee2fa0",
+      "relativePath": "Permission.yaml",
+      "modifiedAt": "2026-01-19T01:24:08.238Z",
+      "properties": {
+        "name": {
+          "type": "String",
+          "unique": true,
+          "length": 100
+        },
+        "slug": {
+          "type": "String",
+          "unique": true,
+          "length": 100
+        },
+        "group": {
+          "type": "String",
+          "nullable": true,
+          "length": 50
+        },
+        "roles": {
+          "type": "Association",
+          "relation": "ManyToMany",
+          "target": "Role",
+          "joinTable": "role_permissions"
+        }
+      },
+      "timestamps": true
+    },
+    "Role": {
+      "name": "Role",
+      "kind": "object",
+      "hash": "5ba29b1e69eb80dccdbfef4b56551502ba324e95c7925ab613ea44e36076f5a1",
+      "relativePath": "Role.yaml",
+      "modifiedAt": "2026-01-19T01:24:08.237Z",
+      "properties": {
+        "name": {
+          "type": "String",
+          "unique": true,
+          "length": 100
+        },
+        "slug": {
+          "type": "String",
+          "unique": true,
+          "length": 100
+        },
+        "description": {
+          "type": "Text",
+          "nullable": true
+        },
+        "level": {
+          "type": "Int",
+          "default": 0
+        },
+        "permissions": {
+          "type": "Association",
+          "relation": "ManyToMany",
+          "target": "Permission",
+          "joinTable": "role_permissions"
+        }
+      },
+      "timestamps": true
+    },
+    "RolePermission": {
+      "name": "RolePermission",
+      "kind": "object",
+      "hash": "1f7d04a9b393c1a7ac808aa82898ba268316a00a8707a416999d8c03d38ceb9d",
+      "relativePath": "RolePermission.yaml",
+      "modifiedAt": "2026-01-19T01:24:08.238Z",
+      "properties": {
+        "role": {
+          "type": "Association",
+          "relation": "ManyToOne",
+          "target": "Role"
+        },
+        "permission": {
+          "type": "Association",
+          "relation": "ManyToOne",
+          "target": "Permission"
+        }
+      },
+      "timestamps": true
+    },
+    "Team": {
+      "name": "Team",
+      "kind": "object",
+      "hash": "eb9b3e593c371aa05f2973647eccddfa06ad1ab88b28131546907fcc0ffed1dd",
+      "relativePath": "Team.yaml",
+      "modifiedAt": "2026-01-19T01:24:08.240Z",
+      "properties": {
+        "console_team_id": {
+          "type": "BigInt",
+          "unique": true,
+          "unsigned": true
+        },
+        "console_org_id": {
+          "type": "BigInt",
+          "unsigned": true
+        },
+        "name": {
+          "type": "String",
+          "length": 100
+        }
+      },
+      "timestamps": true,
+      "softDelete": true,
+      "indexes": [
+        {
+          "columns": [
+            "console_org_id"
+          ],
+          "unique": false
+        }
+      ]
+    },
+    "TeamPermission": {
+      "name": "TeamPermission",
+      "kind": "object",
+      "hash": "4b8489aab8bf3f219197529c3f144d066ab39d5a7fff1cdda8ff0275d6909abf",
+      "relativePath": "TeamPermission.yaml",
+      "modifiedAt": "2026-01-19T01:24:08.239Z",
+      "properties": {
+        "console_org_id": {
+          "type": "BigInt",
+          "unsigned": true
+        },
+        "console_team_id": {
+          "type": "BigInt",
+          "unsigned": true
+        },
+        "permission": {
+          "type": "Association",
+          "relation": "ManyToOne",
+          "target": "Permission"
+        }
+      },
+      "timestamps": true,
+      "softDelete": true,
+      "indexes": [
+        {
+          "columns": [
+            "console_org_id",
+            "console_team_id"
+          ],
+          "unique": false
+        }
+      ]
+    }
+  },
+  "migrations": []
+}
