@@ -1,76 +1,21 @@
 {
   "version": 2,
-  "updatedAt": "2026-01-19T12:31:12.058Z",
+  "updatedAt": "2026-01-19T12:43:44.425Z",
   "driver": "mysql",
   "schemas": {
-    "User": {
-      "name": "User",
-      "kind": "object",
-      "hash": "6afb35facf26ad1f9de2e011fc151b3309ff344d957934007423fccfdb28f89e",
-      "relativePath": "User.yaml",
-      "modifiedAt": "2026-01-19T12:31:11.450Z",
-      "properties": {
-        "name": {
-          "type": "String"
-        },
-        "email": {
-          "type": "String",
-          "unique": true
-        },
-        "email_verified_at": {
-          "type": "Timestamp",
-          "nullable": true
-        },
-        "password": {
-          "type": "String"
-        },
-        "remember_token": {
-          "type": "String",
-          "nullable": true,
-          "length": 100
-        },
-        "console_user_id": {
-          "type": "BigInt",
-          "nullable": true,
-          "unique": true,
-          "unsigned": true
-        },
-        "console_access_token": {
-          "type": "Text",
-          "nullable": true
-        },
-        "console_refresh_token": {
-          "type": "Text",
-          "nullable": true
-        },
-        "console_token_expires_at": {
-          "type": "Timestamp",
-          "nullable": true
-        },
-        "role": {
-          "type": "Association",
-          "nullable": true,
-          "relation": "ManyToOne",
-          "target": "Role"
-        }
-      },
-      "timestamps": true
-    },
     "Branch": {
       "name": "Branch",
       "kind": "object",
-      "hash": "8858cf23feee7712207f72c0043551d8889286ba1cbf8bf89837347da804e5a5",
+      "hash": "c7dd2f70f6d9d65fa75c9dbca5831597cfcdf23691cbd60ae62cae545cf6ebb7",
       "relativePath": "Branch.yaml",
-      "modifiedAt": "2026-01-19T12:31:11.449Z",
+      "modifiedAt": "2026-01-19T12:43:43.831Z",
       "properties": {
         "console_branch_id": {
-          "type": "BigInt",
-          "unique": true,
-          "unsigned": true
+          "type": "Uuid",
+          "unique": true
         },
         "console_org_id": {
-          "type": "BigInt",
-          "unsigned": true
+          "type": "Uuid"
         },
         "code": {
           "type": "String",
@@ -79,16 +24,9 @@
         "name": {
           "type": "String",
           "length": 100
-        },
-        "is_headquarters": {
-          "type": "Boolean",
-          "default": false
-        },
-        "is_active": {
-          "type": "Boolean",
-          "default": true
         }
       },
+      "idType": "Uuid",
       "timestamps": true,
       "softDelete": true,
       "indexes": [
@@ -110,9 +48,9 @@
     "Permission": {
       "name": "Permission",
       "kind": "object",
-      "hash": "af59545430bf8f9a52adddd7ac631e49a5e2fb43d57a9ef73315039ab7ee2fa0",
+      "hash": "2a2c4bf6d98122f87cf1a0ef1ff352bcab6958ee085fdfc96aeff68bfb80bda9",
       "relativePath": "Permission.yaml",
-      "modifiedAt": "2026-01-19T12:31:11.450Z",
+      "modifiedAt": "2026-01-19T12:43:43.832Z",
       "properties": {
         "name": {
           "type": "String",
@@ -136,14 +74,15 @@
           "joinTable": "role_permissions"
         }
       },
+      "idType": "Uuid",
       "timestamps": true
     },
     "Role": {
       "name": "Role",
       "kind": "object",
-      "hash": "5ba29b1e69eb80dccdbfef4b56551502ba324e95c7925ab613ea44e36076f5a1",
+      "hash": "7e4828017d3ec814a5515b133eb26a432fed2e17686923d15bc14207060f50f9",
       "relativePath": "Role.yaml",
-      "modifiedAt": "2026-01-19T12:31:11.449Z",
+      "modifiedAt": "2026-01-19T12:43:43.831Z",
       "properties": {
         "name": {
           "type": "String",
@@ -170,14 +109,15 @@
           "joinTable": "role_permissions"
         }
       },
+      "idType": "Uuid",
       "timestamps": true
     },
     "RolePermission": {
       "name": "RolePermission",
       "kind": "object",
-      "hash": "1f7d04a9b393c1a7ac808aa82898ba268316a00a8707a416999d8c03d38ceb9d",
+      "hash": "a4280e499713a942474760d462b750fd698798bc7904cd3f9f2834ae9c8958de",
       "relativePath": "RolePermission.yaml",
-      "modifiedAt": "2026-01-19T12:31:11.450Z",
+      "modifiedAt": "2026-01-19T12:43:43.832Z",
       "properties": {
         "role": {
           "type": "Association",
@@ -190,29 +130,29 @@
           "target": "Permission"
         }
       },
+      "idType": "Uuid",
       "timestamps": true
     },
     "Team": {
       "name": "Team",
       "kind": "object",
-      "hash": "eb9b3e593c371aa05f2973647eccddfa06ad1ab88b28131546907fcc0ffed1dd",
+      "hash": "cae85811509f3166e17ff5475da17f4931158d3c15ab3292369e4d11f88dbf95",
       "relativePath": "Team.yaml",
-      "modifiedAt": "2026-01-19T12:31:11.451Z",
+      "modifiedAt": "2026-01-19T12:43:43.832Z",
       "properties": {
         "console_team_id": {
-          "type": "BigInt",
-          "unique": true,
-          "unsigned": true
+          "type": "Uuid",
+          "unique": true
         },
         "console_org_id": {
-          "type": "BigInt",
-          "unsigned": true
+          "type": "Uuid"
         },
         "name": {
           "type": "String",
           "length": 100
         }
       },
+      "idType": "Uuid",
       "timestamps": true,
       "softDelete": true,
       "indexes": [
@@ -227,17 +167,15 @@
     "TeamPermission": {
       "name": "TeamPermission",
       "kind": "object",
-      "hash": "4b8489aab8bf3f219197529c3f144d066ab39d5a7fff1cdda8ff0275d6909abf",
+      "hash": "bda165f9694ae91dc1e968035a376bd6f2e11699ea8a81acefe3a9e785947edb",
       "relativePath": "TeamPermission.yaml",
-      "modifiedAt": "2026-01-19T12:31:11.450Z",
+      "modifiedAt": "2026-01-19T12:43:43.832Z",
       "properties": {
         "console_org_id": {
-          "type": "BigInt",
-          "unsigned": true
+          "type": "Uuid"
         },
         "console_team_id": {
-          "type": "BigInt",
-          "unsigned": true
+          "type": "Uuid"
         },
         "permission": {
           "type": "Association",
@@ -245,6 +183,7 @@
           "target": "Permission"
         }
       },
+      "idType": "Uuid",
       "timestamps": true,
       "softDelete": true,
       "indexes": [
@@ -256,6 +195,47 @@
           "unique": false
         }
       ]
+    },
+    "User": {
+      "name": "User",
+      "kind": "object",
+      "hash": "fbdf5d284423617ab2d5f00563b0dfc905f0fe9e7ad17d2a9faf488e994bfd84",
+      "relativePath": "User.yaml",
+      "modifiedAt": "2026-01-19T12:43:43.832Z",
+      "properties": {
+        "name": {
+          "type": "String"
+        },
+        "email": {
+          "type": "String",
+          "unique": true
+        },
+        "console_user_id": {
+          "type": "Uuid",
+          "nullable": true,
+          "unique": true
+        },
+        "console_access_token": {
+          "type": "Text",
+          "nullable": true
+        },
+        "console_refresh_token": {
+          "type": "Text",
+          "nullable": true
+        },
+        "console_token_expires_at": {
+          "type": "Timestamp",
+          "nullable": true
+        },
+        "roles": {
+          "type": "Association",
+          "relation": "ManyToMany",
+          "target": "Role",
+          "joinTable": "role_user"
+        }
+      },
+      "idType": "Uuid",
+      "timestamps": true
     }
   },
   "migrations": []
