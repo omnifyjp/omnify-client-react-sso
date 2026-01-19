@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-01-19T12:12:28.494Z",
+  "updatedAt": "2026-01-19T12:25:34.715Z",
   "driver": "mysql",
   "schemas": {
     "User": {
@@ -8,7 +8,7 @@
       "kind": "object",
       "hash": "6afb35facf26ad1f9de2e011fc151b3309ff344d957934007423fccfdb28f89e",
       "relativePath": "User.yaml",
-      "modifiedAt": "2026-01-19T12:12:27.660Z",
+      "modifiedAt": "2026-01-19T12:25:33.840Z",
       "properties": {
         "name": {
           "type": "String"
@@ -61,7 +61,7 @@
       "kind": "object",
       "hash": "8858cf23feee7712207f72c0043551d8889286ba1cbf8bf89837347da804e5a5",
       "relativePath": "Branch.yaml",
-      "modifiedAt": "2026-01-19T12:12:27.659Z",
+      "modifiedAt": "2026-01-19T12:25:33.839Z",
       "properties": {
         "console_branch_id": {
           "type": "BigInt",
@@ -112,7 +112,7 @@
       "kind": "object",
       "hash": "af59545430bf8f9a52adddd7ac631e49a5e2fb43d57a9ef73315039ab7ee2fa0",
       "relativePath": "Permission.yaml",
-      "modifiedAt": "2026-01-19T12:12:27.660Z",
+      "modifiedAt": "2026-01-19T12:25:33.840Z",
       "properties": {
         "name": {
           "type": "String",
@@ -143,7 +143,7 @@
       "kind": "object",
       "hash": "5ba29b1e69eb80dccdbfef4b56551502ba324e95c7925ab613ea44e36076f5a1",
       "relativePath": "Role.yaml",
-      "modifiedAt": "2026-01-19T12:12:27.659Z",
+      "modifiedAt": "2026-01-19T12:25:33.839Z",
       "properties": {
         "name": {
           "type": "String",
@@ -177,7 +177,7 @@
       "kind": "object",
       "hash": "1f7d04a9b393c1a7ac808aa82898ba268316a00a8707a416999d8c03d38ceb9d",
       "relativePath": "RolePermission.yaml",
-      "modifiedAt": "2026-01-19T12:12:27.659Z",
+      "modifiedAt": "2026-01-19T12:25:33.839Z",
       "properties": {
         "role": {
           "type": "Association",
@@ -197,7 +197,7 @@
       "kind": "object",
       "hash": "eb9b3e593c371aa05f2973647eccddfa06ad1ab88b28131546907fcc0ffed1dd",
       "relativePath": "Team.yaml",
-      "modifiedAt": "2026-01-19T12:12:27.661Z",
+      "modifiedAt": "2026-01-19T12:25:33.840Z",
       "properties": {
         "console_team_id": {
           "type": "BigInt",
@@ -229,7 +229,7 @@
       "kind": "object",
       "hash": "4b8489aab8bf3f219197529c3f144d066ab39d5a7fff1cdda8ff0275d6909abf",
       "relativePath": "TeamPermission.yaml",
-      "modifiedAt": "2026-01-19T12:12:27.660Z",
+      "modifiedAt": "2026-01-19T12:25:33.840Z",
       "properties": {
         "console_org_id": {
           "type": "BigInt",
