@@ -1,6 +1,6 @@
 {
     "name": "@famgia/omnify-react-sso",
-    "version": "2.0.10",
+    "version": "2.2.1",
     "description": "SSO (Single Sign-On) schemas, types, and utilities for Omnify",
     "type": "module",
     "main": "./dist/index.cjs",
@@ -36,6 +36,19 @@
                 "types": "./dist/schemas/*.d.cts",
                 "default": "./dist/schemas/*.cjs"
             }
+        },
+        "./testing": {
+            "import": {
+                "types": "./dist/testing/index.d.ts",
+                "default": "./dist/testing/index.js"
+            },
+            "require": {
+                "types": "./dist/testing/index.d.cts",
+                "default": "./dist/testing/index.cjs"
+            }
+        },
+        "./@omnify-base/*": {
+            "types": "./dist/@omnify-base/*"
         }
     },
     "files": [
@@ -46,9 +59,13 @@
     "scripts": {
         "build:schemas": "tsx scripts/build-schemas.ts",
         "build:lib": "tsup",
-        "build": "pnpm build:schemas && pnpm build:lib",
+        "build:copy-base": "cp -r node_modules/@omnify-base dist/",
+        "build": "pnpm build:schemas && pnpm build:lib && pnpm build:copy-base",
         "clean": "rm -rf dist src/schemas schemas",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "postinstall": "node scripts/postinstall.cjs"
     },
     "keywords": [
         "omnify",
@@ -68,6 +85,10 @@
         "directory": "packages/omnify-client-react-sso"
     },
     "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0",
+        "antd": "^5.0.0 || ^6.0.0",
+        "@ant-design/icons": "^5.0.0 || ^6.0.0",
         "zod": "^3.25.0 || ^4.0.0"
     },
     "dependencies": {
@@ -75,9 +96,18 @@
         "@famgia/omnify-typescript": "^2.0.9"
     },
     "devDependencies": {
+        "@ant-design/icons": "^6.0.0",
+        "@testing-library/react": "^16.0.0",
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0",
+        "antd": "^6.0.0",
+        "happy-dom": "^17.0.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
         "tsup": "^8.5.1",
         "tsx": "^4.21.0",
         "typescript": "^5.8.3",
+        "vitest": "^3.2.4",
         "zod": "^4.3.5"
     }
 }

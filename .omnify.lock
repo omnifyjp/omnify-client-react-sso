@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "updatedAt": "2026-01-19T14:42:24.910Z",
+  "updatedAt": "2026-01-20T17:30:54.733Z",
   "driver": "mysql",
   "schemas": {
     "Branch": {
       "name": "Branch",
       "kind": "object",
-      "hash": "c7dd2f70f6d9d65fa75c9dbca5831597cfcdf23691cbd60ae62cae545cf6ebb7",
+      "hash": "f1a1b1a536898c412fbce3ff60a5f81cb69466d24f9aa89265c6f1d32301d8ed",
       "relativePath": "Branch.yaml",
-      "modifiedAt": "2026-01-19T14:42:23.781Z",
+      "modifiedAt": "2026-01-20T17:30:53.993Z",
       "properties": {
         "console_branch_id": {
           "type": "Uuid",
@@ -24,6 +24,14 @@
         "name": {
           "type": "String",
           "length": 100
+        },
+        "is_headquarters": {
+          "type": "Boolean",
+          "default": false
+        },
+        "is_active": {
+          "type": "Boolean",
+          "default": true
         }
       },
       "idType": "Uuid",
@@ -42,6 +50,20 @@
             "code"
           ],
           "unique": true
+        },
+        {
+          "columns": [
+            "console_org_id",
+            "is_active"
+          ],
+          "unique": false
+        },
+        {
+          "columns": [
+            "console_org_id",
+            "is_headquarters"
+          ],
+          "unique": false
         }
       ]
     },
@@ -50,7 +72,7 @@
       "kind": "object",
       "hash": "2a2c4bf6d98122f87cf1a0ef1ff352bcab6958ee085fdfc96aeff68bfb80bda9",
       "relativePath": "Permission.yaml",
-      "modifiedAt": "2026-01-19T14:42:23.782Z",
+      "modifiedAt": "2026-01-20T17:30:53.994Z",
       "properties": {
         "name": {
           "type": "String",
@@ -82,7 +104,7 @@
       "kind": "object",
       "hash": "7e4828017d3ec814a5515b133eb26a432fed2e17686923d15bc14207060f50f9",
       "relativePath": "Role.yaml",
-      "modifiedAt": "2026-01-19T14:42:23.781Z",
+      "modifiedAt": "2026-01-20T17:30:53.993Z",
       "properties": {
         "name": {
           "type": "String",
@@ -115,9 +137,9 @@
     "RolePermission": {
       "name": "RolePermission",
       "kind": "object",
-      "hash": "9575276e82a912785c0668eb4f32b185624fcee0f1a45b317ba04952a27e33fb",
+      "hash": "3612d5985a35975511f239b3b966fd1a94afaaf7fbba3fc7de64f5335ded1f1c",
       "relativePath": "RolePermission.yaml",
-      "modifiedAt": "2026-01-19T14:42:23.782Z",
+      "modifiedAt": "2026-01-20T17:30:53.993Z",
       "properties": {
         "role": {
           "type": "Association",
@@ -130,18 +152,21 @@
           "target": "Permission"
         }
       },
-      "primaryKey": [
-        "role_id",
-        "permission_id"
-      ],
-      "timestamps": true
+      "id": false,
+      "timestamps": true,
+      "uniqueConstraints": [
+        [
+          "role",
+          "permission"
+        ]
+      ]
     },
     "Team": {
       "name": "Team",
       "kind": "object",
       "hash": "cae85811509f3166e17ff5475da17f4931158d3c15ab3292369e4d11f88dbf95",
       "relativePath": "Team.yaml",
-      "modifiedAt": "2026-01-19T14:42:23.783Z",
+      "modifiedAt": "2026-01-20T17:30:53.995Z",
       "properties": {
         "console_team_id": {
           "type": "Uuid",
@@ -172,7 +197,7 @@
       "kind": "object",
       "hash": "bda165f9694ae91dc1e968035a376bd6f2e11699ea8a81acefe3a9e785947edb",
       "relativePath": "TeamPermission.yaml",
-      "modifiedAt": "2026-01-19T14:42:23.782Z",
+      "modifiedAt": "2026-01-20T17:30:53.994Z",
       "properties": {
         "console_org_id": {
           "type": "Uuid"
@@ -202,9 +227,9 @@
     "User": {
       "name": "User",
       "kind": "object",
-      "hash": "fbdf5d284423617ab2d5f00563b0dfc905f0fe9e7ad17d2a9faf488e994bfd84",
+      "hash": "bd5e0aa3bfce8c039f674024cc34474d41e56a5d76b2600b18024c124f68913b",
       "relativePath": "User.yaml",
-      "modifiedAt": "2026-01-19T14:42:23.782Z",
+      "modifiedAt": "2026-01-20T17:30:53.994Z",
       "properties": {
         "name": {
           "type": "String"
@@ -234,7 +259,39 @@
           "type": "Association",
           "relation": "ManyToMany",
           "target": "Role",
-          "joinTable": "role_user"
+          "joinTable": "role_user",
+          "pivotFields": {
+            "console_org_id": {
+              "type": "String",
+              "length": 36,
+              "nullable": true,
+              "displayName": {
+                "ja": "組織ID",
+                "en": "Organization ID",
+                "vi": "ID tổ chức"
+              },
+              "description": {
+                "ja": "nullの場合はシステム全体に適用（グローバルスコープ）",
+                "en": "null means system-wide assignment (global scope)",
+                "vi": "null nghĩa là áp dụng toàn hệ thống (phạm vi toàn cục)"
+              }
+            },
+            "console_branch_id": {
+              "type": "String",
+              "length": 36,
+              "nullable": true,
+              "displayName": {
+                "ja": "ブランチID",
+                "en": "Branch ID",
+                "vi": "ID chi nhánh"
+              },
+              "description": {
+                "ja": "nullの場合は組織全体に適用（組織スコープ）。指定した場合は該当ブランチのみ（ブランチスコープ）",
+                "en": "null means org-wide assignment. When specified, applies only to that branch (branch scope)",
+                "vi": "null nghĩa là áp dụng toàn tổ chức. Khi chỉ định, chỉ áp dụng cho chi nhánh đó (phạm vi chi nhánh)"
+              }
+            }
+          }
         }
       },
       "idType": "Uuid",
