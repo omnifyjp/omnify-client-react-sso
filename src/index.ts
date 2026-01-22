@@ -16,6 +16,8 @@ export * from './schemas';
 
 export { SsoContext } from './context/SsoContext';
 export { SsoProvider } from './context/SsoProvider';
+export { BranchContext } from './context/BranchContext';
+export { BranchProvider } from './context/BranchProvider';
 
 // =============================================================================
 // Hooks
@@ -24,11 +26,13 @@ export { SsoProvider } from './context/SsoProvider';
 export { useAuth } from './hooks/useAuth';
 export { useOrganization } from './hooks/useOrganization';
 export { useSso } from './hooks/useSso';
+export { useBranch } from './hooks/useBranch';
 
 // Hook return types
 export type { UseAuthReturn } from './hooks/useAuth';
 export type { UseOrganizationReturn } from './hooks/useOrganization';
 export type { UseSsoReturn } from './hooks/useSso';
+export type { UseBranchReturn } from './hooks/useBranch';
 
 // =============================================================================
 // Components
@@ -37,6 +41,18 @@ export type { UseSsoReturn } from './hooks/useSso';
 export { SsoCallback } from './components/SsoCallback';
 export { OrganizationSwitcher } from './components/OrganizationSwitcher';
 export { ProtectedRoute } from './components/ProtectedRoute';
+export { OrgBranchSelectorModal } from './components/OrgBranchSelectorModal';
+export { BranchGate, useBranchGate } from './components/BranchGate';
+
+// =============================================================================
+// Utilities
+// =============================================================================
+
+export {
+  createBranchHeaderSetter,
+  setBranchHeaders,
+  BRANCH_HEADERS,
+} from './utils/branchHeaders';
 
 // =============================================================================
 // Services - Individual services (recommended)
@@ -147,6 +163,15 @@ export type {
     SsoCallbackProps,
     OrganizationSwitcherProps,
     ProtectedRouteProps,
+    // Branch types
+    SsoBranch,
+    BranchContextValue,
+    BranchProviderProps,
+    OrgBranchSelectorModalProps,
+    OrgBranchSelection,
+    // BranchGate types
+    BranchGateProps,
+    BranchGateSelection,
 } from './types';
 
 // =============================================================================

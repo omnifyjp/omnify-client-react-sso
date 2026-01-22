@@ -140,3 +140,115 @@ export interface ProtectedRouteProps {
     /** Called when access is denied */
     onAccessDenied?: (reason: 'unauthenticated' | 'insufficient_role' | 'missing_permission') => void;
 }
+
+// =============================================================================
+// Branch Types
+// =============================================================================
+
+/**
+ * Branch information
+ */
+export interface SsoBranch {
+    id: number;
+    code: string;
+    name: string;
+    is_headquarters: boolean;
+    is_primary: boolean;
+    is_assigned: boolean;
+    access_type: 'explicit' | 'implicit';
+    timezone: string | null;
+    currency: string | null;
+    locale: string | null;
+}
+
+/**
+ * Branch Context value
+ */
+export interface BranchContextValue {
+    /** List of branches user has access to */
+    branches: SsoBranch[];
+    /** Currently selected branch */
+    currentBranch: SsoBranch | null;
+    /** Whether user has access to all branches */
+    allBranchesAccess: boolean;
+    /** Primary branch ID for current user */
+    primaryBranchId: number | null;
+    /** Loading state */
+    isLoading: boolean;
+    /** Error state */
+    error: Error | null;
+    /** Whether user has multiple branches */
+    hasMultipleBranches: boolean;
+    /** Switch to a different branch */
+    switchBranch: (branchId: number) => void;
+    /** Refresh branches */
+    refreshBranches: () => Promise<void>;
+}
+
+/**
+ * Props for BranchProvider
+ */
+export interface BranchProviderProps {
+    children: React.ReactNode;
+    /** Storage type for selected branch */
+    storage?: 'localStorage' | 'sessionStorage';
+    /** Key name for storing selected branch */
+    storageKey?: string;
+    /** Called when branch changes */
+    onBranchChange?: (branch: SsoBranch | null) => void;
+}
+
+/**
+ * Props for OrgBranchSelectorModal component
+ */
+export interface OrgBranchSelectorModalProps {
+    /** Whether modal is open */
+    open: boolean;
+    /** Called when modal is closed */
+    onClose: () => void;
+    /** Called when selection is confirmed */
+    onConfirm: (orgId: number, branchId: number) => void;
+    /** Modal title */
+    title?: string;
+    /** Whether to require branch selection (default: true) */
+    requireBranch?: boolean;
+    /** Custom loading component */
+    loadingComponent?: React.ReactNode;
+}
+
+/**
+ * Selection result from OrgBranchSelectorModal
+ */
+export interface OrgBranchSelection {
+    organization: SsoOrganization;
+    branch: SsoBranch | null;
+}
+
+/**
+ * Selection stored by BranchGate
+ */
+export interface BranchGateSelection {
+    orgId: string;
+    orgSlug: string;
+    orgName: string;
+    branchId: string;
+    branchName: string;
+    branchCode: string;
+}
+
+/**
+ * Props for BranchGate component
+ */
+export interface BranchGateProps {
+    children: React.ReactNode;
+    /** Called when selection changes (use to set API headers) */
+    onSelectionChange?: (selection: BranchGateSelection | null) => void;
+    /** Storage key for persisting selection */
+    storageKey?: string;
+    /** Custom loading component */
+    loadingComponent?: React.ReactNode;
+    /** Modal title */
+    title?: string;
+    /** Modal description */
+    description?: string;
+}
