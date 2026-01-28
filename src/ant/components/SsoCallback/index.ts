@@ -1,0 +1,1 @@
+export { SsoCallback } from './SsoCallback';

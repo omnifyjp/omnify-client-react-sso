@@ -4,21 +4,6 @@ dist/
 # Dependencies
 node_modules/
 
-# Schema source files (copied from laravel-sso on each build)
-schemas/
-
-# Temp directory for git fetch
-.tmp-laravel-sso/
-
-# Generated schema TypeScript files (regenerated on build)
-src/schemas/
-src/enum/
-
-# Omnify generated files
-.omnify/
-omnify.lock
-CLAUDE.md
-
 # IDE
 .idea/
 .vscode/

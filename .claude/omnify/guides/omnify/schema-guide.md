@@ -133,25 +133,27 @@ properties:
 ### Enum i18n
 
 ```yaml
-name: PostStatus
 kind: enum
 displayName:
   ja: 投稿ステータス
   en: Post Status
   vi: Trạng thái bài viết
 values:
-  draft:
-    ja: 下書き
-    en: Draft
-    vi: Bản nháp
-  published:
-    ja: 公開済み
-    en: Published
-    vi: Đã xuất bản
-  archived:
-    ja: アーカイブ
-    en: Archived
-    vi: Đã lưu trữ
+  - value: draft
+    label:
+      ja: 下書き
+      en: Draft
+      vi: Bản nháp
+  - value: published
+    label:
+      ja: 公開済み
+      en: Published
+      vi: Đã xuất bản
+  - value: archived
+    label:
+      ja: アーカイブ
+      en: Archived
+      vi: Đã lưu trữ
 ```
 
 ## Object Schema Structure
@@ -1269,15 +1271,23 @@ $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 ## Enum Schema
 
 ```yaml
-name: PostStatus
 kind: enum
 displayName:
   ja: 投稿ステータス
   en: Post Status
 values:
-  draft: ドラフト          # value: displayName format
-  published: 公開済み
-  archived: アーカイブ
+  - value: draft
+    label:
+      ja: ドラフト
+      en: Draft
+  - value: published
+    label:
+      ja: 公開済み
+      en: Published
+  - value: archived
+    label:
+      ja: アーカイブ
+      en: Archived
 ```
 
 Use enum in object schema:

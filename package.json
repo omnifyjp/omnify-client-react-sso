@@ -1,7 +1,7 @@
 {
     "name": "@famgia/omnify-react-sso",
     "version": "2.2.2",
-    "description": "SSO (Single Sign-On) schemas, types, and utilities for Omnify",
+    "description": "SSO (Single Sign-On) components, hooks, and utilities for React",
     "type": "module",
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
@@ -17,72 +17,61 @@
                 "default": "./dist/index.cjs"
             }
         },
-        "./schemas": {
+        "./core": {
             "import": {
-                "types": "./dist/schemas/index.d.ts",
-                "default": "./dist/schemas/index.js"
+                "types": "./dist/core/index.d.ts",
+                "default": "./dist/core/index.js"
             },
             "require": {
-                "types": "./dist/schemas/index.d.cts",
-                "default": "./dist/schemas/index.cjs"
+                "types": "./dist/core/index.d.cts",
+                "default": "./dist/core/index.cjs"
             }
         },
-        "./schemas/*": {
+        "./ant": {
             "import": {
-                "types": "./dist/schemas/*.d.ts",
-                "default": "./dist/schemas/*.js"
+                "types": "./dist/ant/index.d.ts",
+                "default": "./dist/ant/index.js"
             },
             "require": {
-                "types": "./dist/schemas/*.d.cts",
-                "default": "./dist/schemas/*.cjs"
+                "types": "./dist/ant/index.d.cts",
+                "default": "./dist/ant/index.cjs"
             }
         },
         "./testing": {
             "import": {
-                "types": "./dist/testing/index.d.ts",
-                "default": "./dist/testing/index.js"
+                "types": "./dist/core/testing/index.d.ts",
+                "default": "./dist/core/testing/index.js"
             },
             "require": {
-                "types": "./dist/testing/index.d.cts",
-                "default": "./dist/testing/index.cjs"
+                "types": "./dist/core/testing/index.d.cts",
+                "default": "./dist/core/testing/index.cjs"
             }
-        },
-        "./@omnify-base/*": {
-            "types": "./dist/@omnify-base/*"
         }
     },
     "files": [
         "dist",
-        "scripts",
         "README.md"
     ],
     "scripts": {
-        "build:schemas": "tsx scripts/build-schemas.ts",
-        "build:lib": "tsup",
-        "build:copy-base": "cp -r node_modules/@omnify-base dist/",
-        "build": "pnpm build:schemas && pnpm build:lib && pnpm build:copy-base",
-        "clean": "rm -rf dist src/schemas schemas",
+        "build": "tsup",
+        "clean": "rm -rf dist",
         "typecheck": "tsc --noEmit",
         "test": "vitest run",
-        "test:watch": "vitest",
-        "postinstall": "node scripts/postinstall.cjs"
+        "test:watch": "vitest"
     },
     "keywords": [
-        "omnify",
         "sso",
+        "react",
         "typescript",
         "zod",
-        "user",
-        "role",
-        "permission",
-        "team"
+        "antd",
+        "authentication"
     ],
     "author": "Famgia",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/ecsol/omnify-ts.git",
-        "directory": "packages/omnify-client-react-sso"
+        "url": "https://github.com/omnifyjp/omnify-client-react-sso.git"
     },
     "peerDependencies": {
         "react": "^18.0.0 || ^19.0.0",
@@ -90,11 +79,13 @@
         "antd": "^5.0.0 || ^6.0.0",
         "@ant-design/icons": "^5.0.0 || ^6.0.0",
         "@tanstack/react-query": "^5.0.0",
+        "react-i18next": "^15.0.0",
         "zod": "^3.25.0 || ^4.0.0"
     },
-    "dependencies": {
-        "@famgia/omnify": "^2.0.9",
-        "@famgia/omnify-typescript": "^2.0.9"
+    "peerDependenciesMeta": {
+        "react-i18next": {
+            "optional": true
+        }
     },
     "devDependencies": {
         "@ant-design/icons": "^6.0.0",
@@ -106,6 +97,7 @@
         "happy-dom": "^17.0.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
+        "react-i18next": "^15.0.0",
         "tsup": "^8.5.1",
         "tsx": "^4.21.0",
         "typescript": "^5.8.3",
