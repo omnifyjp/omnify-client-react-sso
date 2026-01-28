@@ -14,7 +14,7 @@ export const locales: Locale[] = ['ja', 'en', 'vi'];
 
 export const localeNames: Record<Locale, string> = {
     ja: '日本語',
-    en: 'English', 
+    en: 'English',
     vi: 'Tiếng Việt',
 };
 
@@ -55,7 +55,7 @@ function initializeI18n(
     }
 
     const resources: Record<string, { translation: Record<string, unknown> }> = {};
-    
+
     // Add default SSO translations
     for (const locale of locales) {
         resources[locale] = {
@@ -86,8 +86,8 @@ function initializeI18n(
 // Provider
 // =============================================================================
 
-export function I18nProvider({ 
-    children, 
+export function I18nProvider({
+    children,
     defaultLocale: initialLocale = 'ja',
     fallbackLocale = 'ja',
     translations,
@@ -107,10 +107,10 @@ export function I18nProvider({
     );
 }
 
-function I18nProviderInner({ 
-    children, 
+function I18nProviderInner({
+    children,
     initialLocale,
-}: { 
+}: {
     children: ReactNode;
     initialLocale: Locale;
 }) {
@@ -137,7 +137,7 @@ function I18nProviderInner({
                 .split('; ')
                 .find(row => row.startsWith('locale='))
                 ?.split('=')[1] as Locale | undefined;
-            
+
             if (cookieLocale && locales.includes(cookieLocale)) {
                 setLocale(cookieLocale);
             }
@@ -158,11 +158,11 @@ function I18nProviderInner({
 export function useLocale(): Locale {
     const context = useContext(I18nContext);
     const { i18n: i18nInstance } = useTranslation();
-    
+
     if (context) {
         return context.locale;
     }
-    
+
     // Fallback to i18next language
     return (i18nInstance?.language as Locale) || defaultLocale;
 }
@@ -186,7 +186,7 @@ export function getCurrentLocale(): Locale {
             .split('; ')
             .find(row => row.startsWith('locale='))
             ?.split('=')[1] as Locale | undefined;
-        
+
         if (cookieLocale && locales.includes(cookieLocale)) {
             return cookieLocale;
         }
