@@ -12,6 +12,8 @@ export { SsoCallback } from './SsoCallback';
 export { OrganizationSwitcher } from './OrganizationSwitcher';
 export { ProtectedRoute } from './ProtectedRoute';
 export { OrgBranchSelectorModal } from './OrgBranchSelectorModal';
+export { OrgGate } from './OrgGate';
+export type { OrgGateProps } from './OrgGate';
 export { BranchGate, useBranchGate } from './BranchGate';
 export type { BranchGateSelection } from './BranchGate';
 

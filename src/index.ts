@@ -57,6 +57,13 @@ export {
   BRANCH_HEADERS,
 } from './core/utils/branchHeaders';
 
+export {
+  setOrgIdForApi,
+  getOrgIdForApi,
+  clearOrgIdForApi,
+  hasOrgIdForApi,
+} from './core/utils/orgSync';
+
 // =============================================================================
 // Services - Individual services (recommended)
 // =============================================================================
