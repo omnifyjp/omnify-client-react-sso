@@ -1,107 +1,107 @@
 {
-    "name": "@famgia/omnify-react-sso",
-    "version": "2.2.3",
-    "description": "SSO (Single Sign-On) components, hooks, and utilities for React",
-    "type": "module",
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
-    "exports": {
-        ".": {
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/index.js"
-            },
-            "require": {
-                "types": "./dist/index.d.cts",
-                "default": "./dist/index.cjs"
-            }
-        },
-        "./core": {
-            "import": {
-                "types": "./dist/core/index.d.ts",
-                "default": "./dist/core/index.js"
-            },
-            "require": {
-                "types": "./dist/core/index.d.cts",
-                "default": "./dist/core/index.cjs"
-            }
-        },
-        "./ant": {
-            "import": {
-                "types": "./dist/ant/index.d.ts",
-                "default": "./dist/ant/index.js"
-            },
-            "require": {
-                "types": "./dist/ant/index.d.cts",
-                "default": "./dist/ant/index.cjs"
-            }
-        },
-        "./testing": {
-            "import": {
-                "types": "./dist/core/testing/index.d.ts",
-                "default": "./dist/core/testing/index.js"
-            },
-            "require": {
-                "types": "./dist/core/testing/index.d.cts",
-                "default": "./dist/core/testing/index.cjs"
-            }
-        }
+  "name": "@famgia/omnify-react-sso",
+  "version": "2.2.4",
+  "description": "SSO (Single Sign-On) components, hooks, and utilities for React",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
-    "files": [
-        "dist",
-        "README.md"
-    ],
-    "scripts": {
-        "build": "tsup",
-        "clean": "rm -rf dist",
-        "typecheck": "tsc --noEmit",
-        "test": "vitest run",
-        "test:watch": "vitest"
+    "./core": {
+      "import": {
+        "types": "./dist/core/index.d.ts",
+        "default": "./dist/core/index.js"
+      },
+      "require": {
+        "types": "./dist/core/index.d.cts",
+        "default": "./dist/core/index.cjs"
+      }
     },
-    "keywords": [
-        "sso",
-        "react",
-        "typescript",
-        "zod",
-        "antd",
-        "authentication"
-    ],
-    "author": "Famgia",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/omnifyjp/omnify-client-react-sso.git"
+    "./ant": {
+      "import": {
+        "types": "./dist/ant/index.d.ts",
+        "default": "./dist/ant/index.js"
+      },
+      "require": {
+        "types": "./dist/ant/index.d.cts",
+        "default": "./dist/ant/index.cjs"
+      }
     },
-    "peerDependencies": {
-        "react": "^18.0.0 || ^19.0.0",
-        "react-dom": "^18.0.0 || ^19.0.0",
-        "antd": "^5.0.0 || ^6.0.0",
-        "@ant-design/icons": "^5.0.0 || ^6.0.0",
-        "@tanstack/react-query": "^5.0.0",
-        "react-i18next": "^15.0.0",
-        "zod": "^3.25.0 || ^4.0.0"
-    },
-    "peerDependenciesMeta": {
-        "react-i18next": {
-            "optional": true
-        }
-    },
-    "devDependencies": {
-        "@ant-design/icons": "^6.0.0",
-        "@tanstack/react-query": "^5.72.0",
-        "@testing-library/react": "^16.0.0",
-        "@types/react": "^19.0.0",
-        "@types/react-dom": "^19.0.0",
-        "antd": "^6.0.0",
-        "happy-dom": "^17.0.0",
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0",
-        "react-i18next": "^15.0.0",
-        "tsup": "^8.5.1",
-        "tsx": "^4.21.0",
-        "typescript": "^5.8.3",
-        "vitest": "^3.2.4",
-        "zod": "^4.3.5"
+    "./testing": {
+      "import": {
+        "types": "./dist/core/testing/index.d.ts",
+        "default": "./dist/core/testing/index.js"
+      },
+      "require": {
+        "types": "./dist/core/testing/index.d.cts",
+        "default": "./dist/core/testing/index.cjs"
+      }
     }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "sso",
+    "react",
+    "typescript",
+    "zod",
+    "antd",
+    "authentication"
+  ],
+  "author": "Famgia",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omnifyjp/omnify-client-react-sso.git"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "antd": "^5.0.0 || ^6.0.0",
+    "@ant-design/icons": "^5.0.0 || ^6.0.0",
+    "@tanstack/react-query": "^5.0.0",
+    "react-i18next": "^15.0.0",
+    "zod": "^3.25.0 || ^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-i18next": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^6.0.0",
+    "@tanstack/react-query": "^5.72.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "antd": "^6.0.0",
+    "happy-dom": "^17.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-i18next": "^15.0.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4",
+    "zod": "^4.3.5"
+  }
 }
