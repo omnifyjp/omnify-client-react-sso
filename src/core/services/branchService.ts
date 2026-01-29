@@ -53,11 +53,11 @@ export function createBranchService(config: ServiceConfig) {
     /**
      * Get branches for current user in organization
      * GET /api/sso/branches
+     * @param orgId - Organization ID or slug (sent via X-Organization-Id header)
      */
     list: async (orgId?: string): Promise<BranchesResponse> => {
-      const params = orgId ? `?organization_slug=${orgId}` : "";
-      return request(apiUrl, `/api/sso/branches${params}`, {
-        headers: buildHeaders(),
+      return request(apiUrl, `/api/sso/branches`, {
+        headers: buildHeaders(orgId),
       });
     },
 
@@ -76,14 +76,14 @@ export function createBranchService(config: ServiceConfig) {
 
     /**
      * Get headquarters branch for organization
+     * @param orgId - Organization ID or slug (sent via X-Organization-Id header)
      */
     getHeadquarters: async (orgId?: string): Promise<Branch | null> => {
       try {
-        const params = orgId ? `?organization_slug=${orgId}` : "";
         const data = await request<BranchesResponse>(
           apiUrl,
-          `/api/sso/branches${params}`,
-          { headers: buildHeaders() }
+          `/api/sso/branches`,
+          { headers: buildHeaders(orgId) }
         );
         return data.branches.find((b) => b.is_headquarters) ?? null;
       } catch {
@@ -93,14 +93,14 @@ export function createBranchService(config: ServiceConfig) {
 
     /**
      * Get primary branch for current user
+     * @param orgId - Organization ID or slug (sent via X-Organization-Id header)
      */
     getPrimary: async (orgId?: string): Promise<Branch | null> => {
       try {
-        const params = orgId ? `?organization_slug=${orgId}` : "";
         const data = await request<BranchesResponse>(
           apiUrl,
-          `/api/sso/branches${params}`,
-          { headers: buildHeaders() }
+          `/api/sso/branches`,
+          { headers: buildHeaders(orgId) }
         );
         if (data.primary_branch_id) {
           return data.branches.find((b) => b.id === data.primary_branch_id) ?? null;
