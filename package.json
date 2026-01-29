@@ -1,6 +1,6 @@
 {
   "name": "@famgia/omnify-react-sso",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "SSO (Single Sign-On) components, hooks, and utilities for React",
   "type": "module",
   "main": "./dist/index.cjs",
